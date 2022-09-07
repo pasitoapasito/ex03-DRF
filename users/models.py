@@ -57,8 +57,9 @@ class User(AbstractBaseUser, TimeStampModel):
           * is_admin은 is_staff에서 활용 됨
     """
     
-    email     = models.EmailField(unique=True, null=True)
-    nickname  = models.CharField(max_length=50, null=True)
+    email     = models.EmailField(unique=True)
+    nickname  = models.CharField(max_length=50)
+    password  = models.CharField(max_length=255, null=True, blank=True)
     kakao_id  = models.BigIntegerField()
     is_admin  = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
