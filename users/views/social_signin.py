@@ -17,10 +17,9 @@ class KakaoSignInView(APIView):
     
     @swagger_auto_schema(responses={201: KakaoSignInSerializer})
     def get(self, request):
-        try:
-            kakao_token = request.headers.get('Authorization')
-        except:
-            Response({'detail': '유효하지 않거나 만료된 토큰입니다.'}, status=400)
+        kakao_token = request.headers.get('Authorization')
+        if not kakao_token:
+            return Response({'detail': '유효하지 않거나 만료된 토큰입니다.'}, status=400)
         
         kakao, err = GetKakaoAccount.get_kakao_user_account_n_check_err(kakao_token)
         if err:
