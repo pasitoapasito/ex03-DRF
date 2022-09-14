@@ -1,1 +1,1 @@
-# DRF Social Login Practice
+# DRF Social Signin Practice
