@@ -6,7 +6,7 @@ from rest_framework_simplejwt.tokens import OutstandingToken, BlacklistedToken
 from unittest.mock import patch
 from unittest      import mock
 
-from users.models import User
+from users.models  import User
 
 
 class UserSignOutTest(APITestCase):
@@ -60,7 +60,7 @@ class UserSignOutTest(APITestCase):
                                   .get(user=user)
         
         data = {
-            'refesh_token': refresh.token
+            'refresh_token': refresh.token
         }
         
         response = self.f_client\
@@ -100,7 +100,7 @@ class UserSignOutTest(APITestCase):
                                   .get(user=user)
         
         data = {
-            'refesh_token': refresh.token
+            'refresh_token': refresh.token
         }
         
         response = self.client\
@@ -130,7 +130,7 @@ class UserSignOutTest(APITestCase):
         
     def test_fail_user_signout_due_to_refresh_token_mismatch(self):
         data = {
-            'refesh_token': 'fake token'
+            'refresh_token': 'fake token'
         }
         
         response = self.f_client\
@@ -168,7 +168,7 @@ class UserSignOutTest(APITestCase):
         access = response.json()['access']
         
         data = {
-            'refesh_token': access
+            'refresh_token': access
         }
         
         response = self.f_client\
@@ -210,7 +210,7 @@ class UserSignOutTest(APITestCase):
                                   .get(user=user)
         
         data = {
-            'refesh_token': refresh.token
+            'refresh_token': refresh.token
         }
         
         response = self.f_client\
