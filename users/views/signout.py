@@ -13,9 +13,9 @@ class UserSignOutView(APIView):
     
     post_params = openapi.Schema(
         type       = openapi.TYPE_OBJECT,
-        required   = ['refesh_token'],
+        required   = ['refresh_token'],
         properties = {
-            'refesh_token': openapi.Schema(type=openapi.TYPE_STRING, description='string'),
+            'refresh_token': openapi.Schema(type=openapi.TYPE_STRING, description='string'),
         }
     )
     
@@ -24,7 +24,7 @@ class UserSignOutView(APIView):
         user = request.user
         
         try:
-            refresh = RefreshToken(request.data['refesh_token'])
+            refresh = RefreshToken(request.data['refresh_token'])
         except:
             return Response({'detail': '유효하지 않거나 만료된 토큰입니다.'}, status=400)
         
