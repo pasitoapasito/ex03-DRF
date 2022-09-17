@@ -25,6 +25,7 @@ Django app url patterns
 """
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/users', include('users.urls')),
 ]
 
 """
